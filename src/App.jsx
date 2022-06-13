@@ -85,7 +85,7 @@ const App = () => {
       case 'exit':
         setCommands([...commands, { command, output: `Thank you for using <span class="text-amber-400">TERMUNIL</span>. Hope to see you soon ! 👋` }]);
         setTimeout(() => {
-          openInNewTab('https:/github.com/pinakipb2');
+          openInNewTab('https://github.com/pinakipb2/');
         }, 4000);
         break;
       case 'ls':
