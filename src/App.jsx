@@ -41,7 +41,7 @@ const App = () => {
         setCommands([...commands, { command, output: htmlForHelp.join('') }]);
         break;
       case 'whois':
-        setCommands([...commands, { command, output: 'This Site is Created by Pinaki Bhattacharjee' }]);
+        setCommands([...commands, { command, output: 'This Site is Created by <span class="text-amber-400">Pinaki Bhattacharjee</span>' }]);
         break;
       case 'whoami':
         setCommands([...commands, { command, output: 'The paradox of “Who am I?” is: we never know, but, we constantly find out.' }]);
@@ -78,6 +78,22 @@ const App = () => {
         break;
       case 'password':
         setCommands([...commands, { command, output: `Lol! You're joking, right? You're gonna have to try harder than that! 😂` }]);
+        break;
+      case 'sudo':
+        setCommands([...commands, { command, output: `You are not an Admin ! 🔒` }]);
+        break;
+      case 'exit':
+        setCommands([...commands, { command, output: `Thank you for using <span class="text-amber-400">TERMUNIL</span>. Hope to see you soon ! 👋` }]);
+        setTimeout(() => {
+          openInNewTab('https:/github.com/pinakipb2');
+        }, 4000);
+        break;
+      case 'ls':
+        const contents = ['index.html', 'package.json', 'postcss.config.js', 'screenshot', 'tailwind.config.js', 'node_modules', 'package-lock.json', 'README.md', 'src', 'vite.config.js'];
+        const htmlForLs = contents.map((content) => `<div>${content}</div>`);
+        htmlForLs.splice(0, 0, '<div class="grid grid-cols-5 gap-4 w-3/4 gap-y-0.5">');
+        htmlForLs.push('</div>');
+        setCommands([...commands, { command, output: htmlForLs.join('') }]);
         break;
       default:
         setCommands([...commands, { command, output: `Command not found. For a list of commands, type <span class="text-amber-400">'help'</span>.` }]);

@@ -17,6 +17,8 @@ export const help = [
   { command: 'social', work: 'Display Social Networks' },
   { command: 'projects', work: 'View Coding Projects' },
   { command: 'history', work: 'View command history' },
+  { command: 'ls', work: 'Displays all directories and files' },
+  { command: 'exit', work: 'Exit TERMUNIL' },
 ];
 
 export const socialHandles = [
