@@ -76,6 +76,9 @@ const App = () => {
       case 'email':
         setCommands([...commands, { command, output: `You can reach me @ 📧 <a class="text-amber-400" href="mailto:pinakipb2@gmail.com">'pinakipb2@gmail.com'</a>.` }]);
         break;
+      case 'password':
+        setCommands([...commands, { command, output: `Lol! You're joking, right? You're gonna have to try harder than that! 😂` }]);
+        break;
       default:
         setCommands([...commands, { command, output: `Command not found. For a list of commands, type <span class="text-amber-400">'help'</span>.` }]);
         break;
