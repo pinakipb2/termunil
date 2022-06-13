@@ -12,6 +12,7 @@ const App = () => {
     //   output: "Command not found. For a list of commands, type 'help'.",
     // },
   ]);
+  const [currentCommandNumber, setCurrentCommandNumber] = useState(0);
   const focusInput = useRef();
 
   const goToEndRef = useRef(null);
@@ -29,6 +30,7 @@ const App = () => {
   const checkCurrentCommand = (currentCommand) => {
     const command = currentCommand.trim();
     setallCommands([...allCommands, command]);
+    setCurrentCommandNumber((currentCommandNumber) => currentCommandNumber + 1);
     switch (command) {
       case 'clear':
         setCommands([]);
@@ -107,17 +109,18 @@ const App = () => {
                   const currentCommand = e.target.value.toLowerCase();
                   checkCurrentCommand(currentCommand);
                   setText('');
+                } else if (e.key === 'ArrowUp') {
+                  // TODO : Go to previous command from allCommands
+                  const prevCommand = currentCommandNumber - 1;
+                  setText(allCommands[prevCommand]);
+                  e.currentTarget.setSelectionRange(allCommands[prevCommand].length, allCommands[prevCommand].length);
+                  if (prevCommand > 0) setCurrentCommandNumber((currentCommandNumber) => currentCommandNumber - 1);
+                } else if (e.key === 'ArrowDown') {
+                  // TODO : Go to next command from allCommands
+                  const nextCommand = currentCommandNumber - 1;
+                  setText(allCommands[nextCommand]);
+                  if (nextCommand < allCommands.length - 1) setCurrentCommandNumber((currentCommandNumber) => currentCommandNumber + 1);
                 }
-                // TODO
-                // else if (e.key === 'ArrowUp') {
-                //   // TODO : Go to previous command from allCommands
-                //   const prevCommand = commands[commands.length - 1]?.command ? commands[commands.length - 1].command : '';
-                //   setText(prevCommand);
-                // } else if (e.key === 'ArrowDown') {
-                //   // TODO : Go to next command from allCommands
-                //   const nextCommand = commands[commands.length - 1]?.command ? commands[commands.length - 1].command : '';
-                //   setText(nextCommand);
-                // }
               }}
               onChange={(e) => {
                 setText(e.target.value.toLowerCase());
